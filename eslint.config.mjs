@@ -14,6 +14,7 @@ export default [
       "@typescript-eslint/no-unused-vars": "off",
       "no-unused-vars": "off",
       "@typescript-eslint/ban-ts-comment": "off",
+      "prefer-rest-params": "off",
     },
   },
 ];

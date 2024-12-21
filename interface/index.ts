@@ -2,18 +2,20 @@
 export interface ErrorLog {
   // type 监控类型：error（代码错误）
   type: "error";
-  // 错误类型：jsError（JS 代码错误）
-  errorType: "jsError";
+  // 错误类型：jsError（JS 代码错误）、promiseError（Promise 错误）、loadResourceError（加载资源错误）、xhrError（API 请求错误）
+  errorType: "jsError" | "promiseError" | "loadResourceError" | "xhrError";
   // 错误信息
   message: string;
   // 错误发生的文件
-  filename: string;
+  filename?: string;
   // 错误发生的行列信息
-  position: string;
+  position?: string;
   // 错误堆栈信息
-  stack: string;
+  stack?: string;
   // 错误发生在 DOM 到顶层元素的链路信息（使用选择器表示，如：body div#container input）
   selector?: string;
+  // 资源标签名称
+  tagName?: string;
 }
 
 // 基础日志
@@ -22,8 +24,6 @@ export interface BaseLog {
   title: string;
   // 网页地址
   url: string;
-  // 环境
-  environment: string;
   // 用户环境完整信息
   userAgent: string;
   // 浏览器

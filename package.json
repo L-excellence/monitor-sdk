@@ -25,5 +25,8 @@
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0"
+  },
+  "dependencies": {
+    "ua-parser-js": "^2.0.0"
   }
 }
