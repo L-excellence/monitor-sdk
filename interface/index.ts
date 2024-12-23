@@ -16,6 +16,17 @@ export interface ErrorLog {
   selector?: string;
   // 资源标签名称
   tagName?: string;
+  // xhr 数据
+  xhrData?: {
+    eventType: "load" | "error"; // xhr 错误事件类型
+    url: string; // api 路径
+    method: string; // 请求方式
+    header: Record<string, unknown>; // 请求头
+    params: string; // 请求参数
+    duration: number; // 请求时长
+    status: number; // 请求状态
+    response: string; // 请求结果
+  };
 }
 
 // 基础日志
