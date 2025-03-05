@@ -2,7 +2,7 @@
 let lastEvent: Event | null;
 let lastEventPath: any[];
 
-["click", "touchstart", "mousedown", "keydown", "mouseover"].forEach(eventType => {
+["click", "touchstart", "mousedown", "keydown"].forEach(eventType => {
   // 埋点方式：无痕埋点 -> 全部埋点
   document.addEventListener(
     eventType,

@@ -1,5 +1,6 @@
 import { ErrorLog } from "../interface";
 import { formatStack } from "../utils";
+import checkWhiteScreen from "../utils/checkWhiteScreen";
 import getLastEvent from "../utils/getLastEvent";
 import getSelector from "../utils/getSelector";
 import tracker from "../utils/tracker";
@@ -37,6 +38,7 @@ export default function injectJSError() {
       // 监听 JS 代码执行出错
       else {
         const lastEvent = getLastEvent(); // 监听到错误后，获取到最后一个交互事件
+        const isWhiteScreen = checkWhiteScreen(); // 检查是否白屏
         // 1.1、数据建模存储
         const errorLog: ErrorLog = {
           // kind: "stability", // 监控指标的大类
@@ -47,6 +49,7 @@ export default function injectJSError() {
           position: `${event.lineno}:${event.colno}`,
           stack: formatStack(event.error.stack),
           selector: lastEvent ? getSelector() : "",
+          isWhiteScreen,
         };
         console.log("js error log: ", errorLog);
 
